@@ -9,13 +9,19 @@ from sanic.response import json
 # Import os for env variables
 import os
 
+# help with CORS
+from cors import add_cors_headers
+
 # to run
 # 1. source env/bin/activate
 # 2. python app.py
 
 # Git venv guide: https://medium.com/wealthy-bytes/the-easiest-way-to-use-a-python-virtual-environment-with-git-401e07c39cde
- 
+# Important! need to pip freeze venv packages: https://stackoverflow.com/questions/8073097/how-to-freeze-packages-installed-only-in-the-virtual-environment
 app = Sanic("app")
+
+# Fill in CORS headers
+app.register_middleware(add_cors_headers, "response")
  
 async def getData(term, numItems, numWordCount):
     '''
