@@ -16,8 +16,11 @@ from cors import add_cors_headers
 # 1. source env/bin/activate
 # 2. python app.py
 
+# before deploying to save venv packages: https://stackoverflow.com/questions/8073097/how-to-freeze-packages-installed-only-in-the-virtual-environment
+# pip freeze -l > requirements.txt 
+
 # Git venv guide: https://medium.com/wealthy-bytes/the-easiest-way-to-use-a-python-virtual-environment-with-git-401e07c39cde
-# Important! need to pip freeze venv packages: https://stackoverflow.com/questions/8073097/how-to-freeze-packages-installed-only-in-the-virtual-environment
+
 app = Sanic("app")
 
 # Fill in CORS headers
