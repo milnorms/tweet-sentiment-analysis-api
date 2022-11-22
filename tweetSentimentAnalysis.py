@@ -31,8 +31,8 @@ import keys
 
 # COMMENT THIS OUT IF USING keys.py
 keys = {
-    'CONSUMER_KEY' : os.environ['CONSUMER_KEY'],
-    'CONSUMER_SECRET' : os.environ['CONSUMER_SECRET'],
+    'API_KEY' : os.environ['API_KEY'],
+    'API_SECRET' : os.environ['API_SECRET'],
     'ACCESS_TOKEN' : os.environ['ACCESS_TOKEN'],
     'ACCESS_TOKEN_SECRET' : os.environ['ACCESS_TOKEN_SECRET']
 }
@@ -48,7 +48,7 @@ def authTwitter(twitterCredentials:dict):
                   (API): Tweepy Twitter API v1.1 Interface
   '''
   # Authenticate
-  auth = tweepy.OAuth1UserHandler(twitterCredentials['CONSUMER_KEY'], twitterCredentials['CONSUMER_SECRET'])
+  auth = tweepy.OAuth1UserHandler(twitterCredentials['API_KEY'], twitterCredentials['API_SECRET'])
   # Set Tokens
   auth.set_access_token(twitterCredentials['ACCESS_TOKEN'], twitterCredentials['ACCESS_TOKEN_SECRET'])
   # Instantiate API
@@ -280,8 +280,8 @@ def getTweetData(term:str, numItems:int, numWordCount:int):
 
         # Constants
         TWITTER_CREDENTIALS = {
-        'CONSUMER_KEY': keys['CONSUMER_KEY'],
-        'CONSUMER_SECRET': keys['CONSUMER_SECRET'],
+        'API_KEY': keys['API_KEY'],
+        'API_SECRET': keys['API_SECRET'],
         'ACCESS_TOKEN': keys['ACCESS_TOKEN'],
         'ACCESS_TOKEN_SECRET': keys['ACCESS_TOKEN_SECRET']
         }
