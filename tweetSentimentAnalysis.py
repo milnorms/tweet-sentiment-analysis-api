@@ -25,17 +25,8 @@ import re
 # Use environment variables
 import os
 
-# UNCOMMENT THIS IF USING keys.py
 # Import twitter credential keys
 import keys
-
-# COMMENT THIS OUT IF USING keys.py
-keys = {
-    'API_KEY' : os.environ['API_KEY'],
-    'API_SECRET' : os.environ['API_SECRET'],
-    'ACCESS_TOKEN' : os.environ['ACCESS_TOKEN'],
-    'ACCESS_TOKEN_SECRET' : os.environ['ACCESS_TOKEN_SECRET']
-}
 
 def authTwitter(twitterCredentials:dict):
   '''
@@ -280,10 +271,10 @@ def getTweetData(term:str, numItems:int, numWordCount:int):
 
         # Constants
         TWITTER_CREDENTIALS = {
-        'API_KEY': keys['API_KEY'],
-        'API_SECRET': keys['API_SECRET'],
-        'ACCESS_TOKEN': keys['ACCESS_TOKEN'],
-        'ACCESS_TOKEN_SECRET': keys['ACCESS_TOKEN_SECRET']
+        'API_KEY' : os.environ['API_KEY'],
+        'API_SECRET' : os.environ['API_SECRET'],
+        'ACCESS_TOKEN' : os.environ['ACCESS_TOKEN'],
+        'ACCESS_TOKEN_SECRET' : os.environ['ACCESS_TOKEN_SECRET']
         }
 
         # Retrieving tweets and returning results as a dict
@@ -310,26 +301,6 @@ def getTweetData(term:str, numItems:int, numWordCount:int):
                 'sentiment': sentiment_dict,
                 'wordcount': wordcount_dict
         }
-
-        # # Converting to different formats for end user to download (csv, excel)
-        # sentiment_csv = sentiment_df.to_csv()
-        # wordcount_csv = wordcount_df.to_csv()
-
-        # # Combining data to a single dict
-        # results = {
-        #         'sentiment': sentiment_dict,
-        #         'wordcount': wordcount_dict,
-        #         'files': {
-        #                 'sentiment': {
-        #                         'csv': sentiment_csv
-        #                 },
-        #                 'wordcount': {
-        #                         'csv': wordcount_csv
-        #                 }
-        #         }
-        # }
-
-
 
         # Returns a dict containing data
         return results
