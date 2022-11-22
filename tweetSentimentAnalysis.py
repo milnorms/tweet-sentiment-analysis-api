@@ -27,7 +27,7 @@ import os
 
 # UNCOMMENT THIS IF USING keys.py
 # Import twitter credential keys
-# from keys import keys
+import keys
 
 # COMMENT THIS OUT IF USING keys.py
 keys = {
