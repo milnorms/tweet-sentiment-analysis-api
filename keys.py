@@ -1,4 +1,3 @@
-import os
 from dotenv import load_dotenv 
 
 #default directory for .env file is the current directory
