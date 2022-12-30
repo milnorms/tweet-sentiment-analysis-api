@@ -25,9 +25,6 @@ from cors import add_cors_headers
 # Git venv guide: https://medium.com/wealthy-bytes/the-easiest-way-to-use-a-python-virtual-environment-with-git-401e07c39cde
 
 app = Sanic("app")
-
-# Fill in CORS headers
-app.register_middleware(add_cors_headers, "response")
  
 async def getData(term, numItems, numWordCount):
     '''
@@ -46,6 +43,9 @@ async def run(request):
     numWordCount = int(request.query_args[2][-1])
     data = await getData(term, numItems, numWordCount)
     return json(data)
+
+# Fill in CORS headers
+app.register_middleware(add_cors_headers, "response")
  
 
 # Running app with env variables for heroku deployment. Ref: https://blog.mayortech.co.uk/posts/running-a-sanic-app-on-heroku/

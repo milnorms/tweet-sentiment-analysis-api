@@ -277,6 +277,8 @@ def getTweetData(term:str, numItems:int, numWordCount:int):
         'ACCESS_TOKEN_SECRET' : os.environ['ACCESS_TOKEN_SECRET']
         }
 
+        print(TWITTER_CREDENTIALS)
+
         # Retrieving tweets and returning results as a dict
         tweets = retrieveTweets(term, numItems, TWITTER_CREDENTIALS)
 
