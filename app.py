@@ -22,6 +22,12 @@ from cors import add_cors_headers
 ## TODO
 # Configure notifications on GCP
 
+
+''''
+TIP
+- DO NOT have quotations around your env variables on deployment serices like ZEET
+'''
+
 # Git venv guide: https://medium.com/wealthy-bytes/the-easiest-way-to-use-a-python-virtual-environment-with-git-401e07c39cde
 
 app = Sanic("app")
