@@ -10,6 +10,8 @@ def _add_cors_headers(response, methods: Iterable[str], host) -> None:
     # If the host isnt found, set default access to local dev host
     if host not in allow_origins:
             host = "http://localhost:3000"
+
+    print(f'ALLOWED HOST ===>>> {host}')
     headers = {
         "Access-Control-Allow-Methods": ",".join(allow_methods),
         "Access-Control-Allow-Origin": host,
