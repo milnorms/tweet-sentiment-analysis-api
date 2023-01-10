@@ -23,13 +23,12 @@ def _add_cors_headers(response, methods: Iterable[str], origin) -> None:
     }
     response.headers.extend(headers)
 
-def getOrigin(url, path):
-    return url[:url.index(path)]
 
 def add_cors_headers(request, response):
-    print(f'URLLL => {request.url}')
-    print(f'PATHHHH => {request.path}')
-    origin = getOrigin(request.url, request.path)
+    # print(f'URLLL => {request.url}')
+    # print(f'PATHHHH => {request.path}')
+    # Getting origin from request header
+    origin = request.headers.get_all('origin')[0]
     print(f'ORIGIN => {origin}')
     if request.method != "OPTIONS":
         methods = [method for method in request.route.methods]
