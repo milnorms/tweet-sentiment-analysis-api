@@ -12,7 +12,7 @@ import os
 # help with CORS
 from cors import add_cors_headers
 
-# to run
+# to run: source env/bin/activate && python app.py
 # 1. source env/bin/activate
 # 2. python app.py
 

@@ -303,5 +303,7 @@ def getTweetData(term:str, numItems:int, numWordCount:int):
                 'wordcount': wordcount_dict
         }
 
+        print('Result success!')
+
         # Returns a dict containing data
         return results
