@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# encoding: utf-8
-
 # Import function to generate tweet sentiment analysis data
 from tweetSentimentAnalysis import getTweetData
 # Import sanic for api endpoint and handling requests
