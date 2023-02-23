@@ -11,6 +11,10 @@ Inspired by [Presidential Debate Twitter Sentiment Analysis using Python and NLT
 1. Install virtualenv
 
         python3 -m pip install --user virtualenv
+        
+   Note: On Debian/Ubuntu systems, you need to install the python3-venv package using the following command.
+
+        apt install python3.10-venv
 
 2. Create a virtual environment
 
