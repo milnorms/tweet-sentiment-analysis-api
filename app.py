@@ -61,7 +61,6 @@ if IS_DEV:
     )
 else:
     # Run settings for prod/ssl environment
-
     ssl = {
         'cert': '/home/milnorms.rocks.chained.crt',
         'key': '/home/milnorms.rocks.key'
