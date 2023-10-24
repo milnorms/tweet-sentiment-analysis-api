@@ -5,35 +5,38 @@ from sanic import Sanic
 from sanic.response import json
 # Import os for env variables
 import os
+
 # help with CORS
 from cors import add_cors_headers
-# Load in .env
-from dotenv import load_dotenv 
 
-#default directory for .env file is the current directory
-#if you set .env in different directory, put the directory address load_dotenv("directory_of_.env)
-load_dotenv()
+## TODO
+# make a separate script for ssl deployment (copy app.py from server)
+# add filepaths to dotenv
+# update readme
 
 # to run: source env/bin/activate && python app.py
 # 1. source env/bin/activate
 # 2. python app.py
 
 # before deploying to save venv packages: https://stackoverflow.com/questions/8073097/how-to-freeze-packages-installed-only-in-the-virtual-environment
-# pip freeze -l > requirements.txt
+# pip freeze -l > requirements.txt 
+
+
+''''
+TIP
+- DO NOT have quotations around your env variables on deployment serices like ZEET
+'''
 
 # Git venv guide: https://medium.com/wealthy-bytes/the-easiest-way-to-use-a-python-virtual-environment-with-git-401e07c39cde
 
-# Flag for dev environment
-IS_DEV = bool(os.environ['IS_DEV']) == True
-
 app = Sanic("app")
-
+ 
 async def getData(term, numItems, numWordCount):
     '''
     Async wrapper for getTweetData()
     '''
     return getTweetData(term, numItems, numWordCount)
-
+ 
 # webapp path defined used route decorator
 @app.route("/api")
 async def run(request):
@@ -48,30 +51,13 @@ async def run(request):
 
 # Fill in CORS headers
 app.register_middleware(add_cors_headers, "response")
+ 
 
-# Check if running in dev environment (from .env file)
-if IS_DEV:
-    # Running app with env variables for development 
-    app.run(
+# Running app with env variables for heroku deployment. Ref: https://blog.mayortech.co.uk/posts/running-a-sanic-app-on-heroku/
+app.run(
     host='0.0.0.0',
     port=int(os.environ.get('PORT', 8000)),
     workers=int(os.environ.get('WEB_CONCURRENCY', 1)),
     debug=bool(os.environ.get('DEBUG', True)),
     auto_reload=True
-    )
-else:
-    # Run settings for prod/ssl environment
-
-    ssl = {
-        'cert': '/home/milnorms.rocks.chained.crt',
-        'key': '/home/milnorms.rocks.key'
-    }
-
-    app.run(
-        host='0.0.0.0',
-        port=8443,
-        ssl=ssl,
-        workers=int(os.environ.get('WEB_CONCURRENCY', 1)),
-        debug=bool(os.environ.get('DEBUG', True)),
-        auto_reload=True
-    )
+)
